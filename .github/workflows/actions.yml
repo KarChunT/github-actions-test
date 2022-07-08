@@ -28,3 +28,11 @@ jobs:
         # steps is github predefined objects
         run: echo "${{ steps.greet.outputs.time }}" # see the code inside actions/... there have some outputs setting is time
 
+
+# you can do local setup instead of actions/checkout@v3
+# echo $GITHUB_SHA
+# echo $GITHUB_REPOSITORY
+# echo &GITHUB_WORKSPACE
+# echo "${{ github.token }}" -- access token
+# git clone https://github.com/$GITHUB_REPOSITORY
+# git checkout $GITHUB_SHA
