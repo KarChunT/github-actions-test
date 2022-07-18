@@ -1,4 +1,4 @@
-name: Shell Commands
+name: Manual Trigger
 on: 
   # this can be trigger manually, but need to go through POST request
   # https://api.github.com/KarChunT/github-actions-test/dispatches
