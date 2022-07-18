@@ -2,12 +2,18 @@ name: Matrix
 on: push
 jobs:
   node-version:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        node_version: [6, 8, 10]
+      # fail-fast: true # means if one of these jobs fails, all other jobs that are running in this matrix will stop
+      # max-parallel: 0 # limit the jobs runs in parallel
+    runs-on: ${{ matrix.os }}
     steps:
       - name: log node version
         run: node -v
       - uses: actions/setup-node@v3
         with:
-          node-version: 6
+          node-version: ${{ matrix.node_version }}
       - name: Log node version
         run: node -v
