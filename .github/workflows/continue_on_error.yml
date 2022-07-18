@@ -1,0 +1,28 @@
+name: Continue on Error
+on: [pull_request]
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    # timeout-minutes: 360
+    steps:
+      - name: echo a string
+        run: echo "Hello World"
+        continue-on-error: true # here
+      - name: multiline script
+        run: |
+          git version
+          python --version
+      - name: python Commands
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python
+  run-windows-command:
+    runs-on: windows-latest
+    needs: ['run-shell-command'] # wait run-shell-command complete first, then only exceute this job
+    steps:
+      - name: Directory Powershell
+        run: Get-Location
+      - name: Directory Bash
+        run: pwd
+        shell: bash
