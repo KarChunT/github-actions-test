@@ -1,6 +1,7 @@
 name: Matrix
 on: push
 jobs:
+  # it will run macos-latest to 6 8 10 ....
   node-version:
     strategy:
       matrix:
