@@ -1,10 +1,9 @@
 name: Shell Commands
 on: 
-  # schedule:
-  #   # minutes hours day_of_a_month month day_of_the_week
-  #   # 0/15 - starting from 0 and 15m -> example: 12:15, 12:30, 12:45
-  #   - cron: "0/5 * * * *" # run every 5 minutes, min is 5m cannot be 2m
-  #   - cron: "0/6 * * * *"
+  # this can be trigger manually, but need to go through POST request
+  # https://api.github.com/KarChunT/github-actions-test/dispatches
+  repository_dispatch: # types is "optional"
+    types: [build] # this "build" need to match with the API "event_type" else is all event_type
   pull_request:
     types: [closed, assigned, opened, reopened]
 jobs:
