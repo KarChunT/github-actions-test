@@ -1,5 +1,5 @@
 name: Actions Workflow
-on: [push]
+on: [push, pull_request]
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
       - name: Log greeting time Output from above actions
         # steps is github predefined objects
         run: echo "${{ steps.greet.outputs.time }}" # see the code inside actions/... there have some outputs setting is time
-
+        
 
 # you can do local setup instead of actions/checkout@v3
 # echo $GITHUB_SHA
