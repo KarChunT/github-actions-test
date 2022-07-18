@@ -1,6 +1,25 @@
 name: container
 on: push
 jobs:
+  # running docker containers in individual steps
+  docker-steps:
+    runs-on: ubuntu-latest
+    container: 
+      image: node:18-alpine3.15
+    steps: # all the steps will be run in the container instead of VM
+      - name: Log node version
+        run: |
+          node -v
+      - name: Step with docker
+        uses: docker://node:16-alpine
+        with: 
+          entrypoint: '/bin/echo'
+          args: 'hello World'
+      - name: Step with docker
+        uses: docker://node:16-alpine
+        with: 
+          entrypoint: '/usr/local/bin/node'
+          args: '-v'
   node-docker:
     runs-on: ubuntu-latest
     container: 
