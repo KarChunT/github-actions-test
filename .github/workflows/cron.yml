@@ -1,5 +1,12 @@
 name: Shell Commands
-on: [pull_request]
+on: 
+  schedule:
+    # minutes hours day_of_a_month month day_of_the_week
+    # 0/15 - starting from 0 and 15m -> example: 12:15, 12:30, 12:45
+    - cron: "0/5 * * * *"
+    - cron: "0/6 * * * *"
+  pull_request:
+    types: [closed, assigned, opened, reopened]
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
