@@ -7,6 +7,9 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         node_version: [6, 8, 10]
+        exclude: # exclude ubuntu-latest when the node_version is 6
+          - os: ubuntu-latest
+            node_version: 6
       # fail-fast: true # means if one of these jobs fails, all other jobs that are running in this matrix will stop
       # max-parallel: 0 # limit the jobs runs in parallel
     runs-on: ${{ matrix.os }}
