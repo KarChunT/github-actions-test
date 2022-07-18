@@ -7,12 +7,20 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         node_version: [6, 8, 10]
+        include: # let's said we dont have version 4, you can use include to add version 4 inside to any os
+          - os: ubuntu-latest
+            node_version: 4
+          - os: ubuntu-latest
+            node_version: 8 # if this already exists in the matrix, we need to add an another variable
+            is_ubuntu_8: "true" # example of the variable
         exclude: # exclude ubuntu-latest when the node_version is 6
           - os: ubuntu-latest
             node_version: 6
       # fail-fast: true # means if one of these jobs fails, all other jobs that are running in this matrix will stop
       # max-parallel: 0 # limit the jobs runs in parallel
     runs-on: ${{ matrix.os }}
+    env:
+      IS_UBUNTU_8: ${{ matrix.is_ubuntu_8 }}
     steps:
       - name: log node version
         run: node -v
