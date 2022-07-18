@@ -1,0 +1,21 @@
+# we can run multiple services as the docker-compose might contain 1 or more services
+name: container
+on: push
+jobs:
+  node-docker:
+    runs-on: ubuntu-latest
+    services: # copy from docker-compose file
+      app:
+        # replace "build" to "image"
+        image: alialaa17/node-api # replace "." to the docker image name from docker hub
+        ports:
+          - 3001:3000
+      mongo: # remember to replace the url from localhost or any to service name which is "mongo"
+        image: mongo
+        ports:
+          - "27017:27017"
+    steps: # all the steps will be run in the container instead of VM
+      - name: Post a user
+        run: |
+          node -v
+          cat /etc/os-release
