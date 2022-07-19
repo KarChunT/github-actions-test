@@ -23,7 +23,7 @@ jobs:
       # execute the script from the sh file
       - uses: actions/checkout@v3
       - name: list all files
-        run: ls
+        run: chmod 777 script.sh
       - name: Run a script
         uses: docker://node:16-alpine
         with:
