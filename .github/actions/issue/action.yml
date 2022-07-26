@@ -1,0 +1,20 @@
+name: 'Open GitHub Issue'
+author: KarChunT
+description: 'Opens a GitHub Issue'
+inputs:
+  token:
+    description: 'GitHub Token'
+    required: true
+  title:
+    description: 'Issue Title'
+    required: true
+  body:
+    description: 'Issue body'
+  assignees:
+    description: 'Issue Assignees'
+outputs:
+  issue: # id of output
+    description: 'The issue obj as a json string'
+runs: # specify is a Docker action or JavaScript action
+  using: 'node12'
+  main: 'dist/index.js'

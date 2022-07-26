@@ -1,0 +1,19 @@
+name: Link From issue
+
+on: push
+
+jobs:
+  testing-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/issue
+        id: hello
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: 'title'
+          body: 'body'
+          assignees: | # list of strings
+            karchunt
+      - run: |
+          echo ${{ steps.hello.outputs.issue }}
