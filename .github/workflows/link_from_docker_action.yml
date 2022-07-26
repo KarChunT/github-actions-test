@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: |
+          chmod 777 ./.github/actions/hello-docker/entrypoint.sh
       - uses: ./.github/actions/hello-docker
         id: hello
         with:
