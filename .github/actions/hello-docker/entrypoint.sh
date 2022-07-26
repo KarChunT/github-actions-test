@@ -18,5 +18,6 @@ echo "some stuff"
 echo "good"
 echo "::endgroup::"
 
+
 # set env value
 echo "::set-env name=HELLO::envvalue"

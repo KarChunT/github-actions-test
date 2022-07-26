@@ -1,4 +1,4 @@
-name: Link From action
+name: Link From docker action
 
 on: push
 
