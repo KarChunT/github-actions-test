@@ -25,4 +25,4 @@ echo "good"
 echo "::endgroup::"
 
 # set env value
-echo "::set-env name=HELLO::envvalue"
+echo "HELLO=envvalue" >> $GITHUB_ENV
