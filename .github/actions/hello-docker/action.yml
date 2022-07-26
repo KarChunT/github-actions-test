@@ -1,0 +1,18 @@
+name: Hello World
+author: KarChunT
+description: description
+inputs:
+  who-to-greet:
+    description: 'Who to greet'
+    required: true
+    default: KarChunT
+outputs:
+  time:
+    description: 'The greeting time'
+runs: # specify is a Docker action or JavaScript action
+  using: 'docker'
+  image: 'Dockerfile' # docker file or docker image and tag
+  # entrypoint:
+  args: # array pass all the arguments to the Dockerfile CMD
+    - ${{ inputs.who-to-greet }}
+
