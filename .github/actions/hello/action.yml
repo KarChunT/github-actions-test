@@ -1,0 +1,14 @@
+name: Hello World
+author: KarChunT
+description: description
+inputs:
+  who-to-greet:
+    description: 'Who to greet'
+    required: true
+    default: KarChunT
+outputs:
+  time:
+    description: 'The greeting time'
+runs: # specify is a Docker action or JavaScript action
+  using: 'node12'
+  main: 'dist/index.js' # name of the file path, this will be the file that will run when our actions runs
